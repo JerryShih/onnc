@@ -9,6 +9,7 @@ notifications:
 
 git:
   submodules: false
+  depth: 1
 
 services: 
   - docker
@@ -18,7 +19,7 @@ matrix:
     - os: linux
       before_install: 
         - "sudo docker pull onnc/ubuntu-14.04-llvm"
-        - "sudo docker create --privileged=true -t --name container -v $PWD/onnc:/home/skymizer/onnc onnc/ubuntu-14.04-llvm"
+        - "sudo docker create --privileged=true -t --name container -v $PWD/ONNC/onnc:/home/skymizer/onnc onnc/ubuntu-14.04-llvm"
         - "sudo docker start container"
 
       script: 
