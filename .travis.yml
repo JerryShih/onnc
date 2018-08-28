@@ -22,7 +22,6 @@ matrix:
         - sudo docker start container
 
       script: 
-        - sudo docker exec -t container /bin/bash -c "git clone https://github.com/ONNC/onnc.git"
-        - sudo docker exec -t container /bin/bash -c "mkdir ./onnc/build"
+        - sudo docker exec -t container /bin/bash -c "mkdir onnc/build"
         - sudo docker exec -t container /bin/bash -c "cd onnc/build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../install .."
         - sudo docker exec -t container /bin/bash -c "cd onnc/build && make -j12 install"
