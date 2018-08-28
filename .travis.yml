@@ -17,12 +17,12 @@ matrix:
   include:
     - os: linux
       before_install: 
-        - docker pull onnc/ubuntu-14.04-llvm
-        - docker create --privileged=true -t --name container  onnc/ubuntu-14.04-llvm
-        - docker start container
+        - sudo docker pull onnc/ubuntu-14.04-llvm
+        - sudo docker create --privileged=true -t --name container onnc/ubuntu-14.04-llvm
+        - sudo docker start container
 
       script: 
-        - docker exec -t container /bin/bash -c "git clone https://github.com/ONNC/onnc.git"
-        - docker exec -t container /bin/bash -c "mkdir ./onnc/build"
-        - docker exec -t container /bin/bash -c "cd onnc/build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../install .."
-        - docker exec -t container /bin/bash -c "cd onnc/build && make -j12 install"
+        - sudo docker exec -t container /bin/bash -c "git clone https://github.com/ONNC/onnc.git"
+        - sudo docker exec -t container /bin/bash -c "mkdir ./onnc/build"
+        - sudo docker exec -t container /bin/bash -c "cd onnc/build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=../install .."
+        - sudo docker exec -t container /bin/bash -c "cd onnc/build && make -j12 install"
